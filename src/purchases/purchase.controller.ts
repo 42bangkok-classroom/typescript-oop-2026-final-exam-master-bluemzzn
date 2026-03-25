@@ -1,13 +1,5 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  ValidationPipe,
-} from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { PurchaseService } from './purchase.service';
-import { CreatePurchaseDto } from './dto/create-purchase.dto';
 
 @Controller('purchases')
 export class PurchaseController {
@@ -22,9 +14,4 @@ export class PurchaseController {
   findOne(@Param('id') id: number) {
     return this.purchaseService.findOne(id);
   }
-
-  // @Post()
-  // create(@Body(ValidationPipe) dto : CreatePurchaseDto){
-  //   return this.purchaseService.create(dto);
-  // }
 }
