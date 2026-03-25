@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { PurchaseService } from './purchase.service';
 
 @Controller('purchases')
@@ -8,5 +8,10 @@ export class PurchaseController {
   @Get()
   findAll() {
     return this.purchaseService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.purchaseService.findOne(id);
   }
 }

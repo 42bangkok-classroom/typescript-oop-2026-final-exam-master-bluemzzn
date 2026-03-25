@@ -16,6 +16,30 @@ export class PurchaseService {
       success: true,
       data: purchase,
       message: 'Fetched purchases successfully',
-    };
+    } as ApiResponse<Purchase[]>;
+  }
+
+  findOne(id: number) {
+    const purchases = this.findAll();
+
+    const filePath = path.join(process.cwd(), 'data/missions.json');
+    const data = fs.readFileSync(filePath, 'utf-8');
+
+    const purchase = JSON.parse(data) as Purchase[];
+    const purchaseid = purchase.find((u) => u.id === id);
+
+    if (!purchaseid) {
+      return {
+        success: false,
+        data: null,
+        message: `Purchase with id ${id} not found`,
+      } as ApiResponse<null>;
+    }
+
+    return {
+      success: true,
+      data: purchase,
+      message: 'Fetched purchases successfully',
+    } as ApiResponse<Purchase[]>;
   }
 }
