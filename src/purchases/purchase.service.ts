@@ -20,7 +20,7 @@ export class PurchaseService {
   }
 
   findOne(id: number) {
-    const purchases = this.findAll();
+    // const purchases = this.findAll();
 
     const filePath = path.join(process.cwd(), 'data/missions.json');
     const data = fs.readFileSync(filePath, 'utf-8');
