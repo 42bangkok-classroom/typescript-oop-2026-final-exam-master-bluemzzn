@@ -14,6 +14,6 @@ import { ProductsModule } from './products/product.module';
       provide: APP_FILTER,
       useClass: ApiExceptionFilter,
     },
-  ]
+  ],
 })
 export class AppModule {}
