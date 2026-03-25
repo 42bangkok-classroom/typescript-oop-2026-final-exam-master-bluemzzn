@@ -4,3 +4,4 @@ export interface ApiResponse<T> {
   data: T | null;
   message: string;
 }
+export type Data = { service: string; version: string };
