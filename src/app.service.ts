@@ -12,7 +12,7 @@ export class AppService {
 //    ],
 //    message: "Hello NestJS"} as ApiResponse<string[]>;
 
-getHello(): string{
+getHellosd(): string{
   return 'sdfsdf';
 }
 //    }

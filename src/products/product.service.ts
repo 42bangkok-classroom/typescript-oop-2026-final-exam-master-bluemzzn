@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as fs from 'fs'
 import path from 'path'
 import { ApiResponse } from 'src/interfaces/response.interface';
-import { Products } from './products.interface';
+import { Products } from './product.interface';
 
 @Injectable()
 export class ProductsService {
