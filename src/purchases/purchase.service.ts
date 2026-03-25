@@ -3,6 +3,7 @@ import { Purchase } from './purchase.interface';
 import { ApiResponse } from 'src/interfaces/response.interface';
 import * as fs from 'fs';
 import path from 'path';
+import { CreatePurchaseDto } from './dto/create-purchase.dto';
 
 @Injectable()
 export class PurchaseService {
@@ -20,13 +21,13 @@ export class PurchaseService {
   }
 
   findOne(id: number) {
-    // const purchases = this.findAll();
+    const purchases = this.findAll();
 
     const filePath = path.join(process.cwd(), 'data/missions.json');
     const data = fs.readFileSync(filePath, 'utf-8');
 
     const purchase = JSON.parse(data) as Purchase[];
-    const purchaseid = purchase.find((u) => u.id === id);
+    const purchaseid = purchases.find((u) => u.id === id);
 
     if (!purchaseid) {
       return {
@@ -41,5 +42,20 @@ export class PurchaseService {
       data: purchase,
       message: 'Fetched purchases successfully',
     } as ApiResponse<Purchase[]>;
+  }
+
+  create(dto: CreatePurchaseDto) {
+    const purchase = this.findAll();
+    const newId = String(purchase.length + 1);
+
+    const newPurchase = { id: newId, ...dto };
+
+    purchase.push(newPurchase);
+
+    return {
+      success: true,
+      data: [newPurchase],
+      message: 'Fetched purchases successfully',
+    };
   }
 }
