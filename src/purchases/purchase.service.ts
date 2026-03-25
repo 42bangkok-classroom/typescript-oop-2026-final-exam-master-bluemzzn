@@ -42,6 +42,4 @@ export class PurchaseService {
       message: 'Fetched purchases successfully',
     } as ApiResponse<Purchase[]>;
   }
-
-  
 }
